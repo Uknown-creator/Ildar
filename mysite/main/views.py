@@ -90,7 +90,9 @@ def change_password(request):
         form = PasswordForm(request.POST)
         if form.is_valid():
             user = request.user
+            print(user.password)
             user.set_password(form.cleaned_data['password'])
+            print(user.password)
             return redirect('http://127.0.0.1:8000/')
     else:
         form = PasswordForm()
