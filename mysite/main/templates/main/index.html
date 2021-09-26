@@ -1,0 +1,18 @@
+{% extends "main/base(2).html" %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+{% block content %}
+<div class="cont">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.error }}
+    <input type="submit" value="Отправить" class ='button'>
+  </form>
+   <br></br>
+  <p>{{ result }}</p>
+  <br></br>
+</div>
+{% endblock %}

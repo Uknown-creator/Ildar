@@ -1,0 +1,15 @@
+{% extends "main/base(2).html" %}
+
+{% block title %}
+Сброс пароля
+{% endblock %}
+
+{% block content %}
+<div class="cont">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><label>Почта:</label>{{ form.mail }}</p>
+            <input type="submit" value="Отправить" class="button">
+        </form>
+</div>
+{% endblock %}

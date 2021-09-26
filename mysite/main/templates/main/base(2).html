@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" cotent="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'main/main.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            background: url({% static 'main/th.jpeg' %});
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: 100%;
+        }
+        .cont{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<script>
+      //  $(document).ready(function () {
+
+      //       $('.navbar .dropdown-item').on('click', function (e) {
+      //           var $el = $(this).children('.dropdown-toggle');
+      //           var $parent = $el.offsetParent(".dropdown-menu");
+      //           $(this).parent("li").toggleClass('open');
+
+      //           if (!$parent.parent().hasClass('navbar-nav')) {
+      //               if ($parent.hasClass('show')) {
+      //                   $parent.removeClass('show');
+      //                   $el.next().removeClass('show');
+      //                   $el.next().css({"top": -999, "left": -999});
+      //               } else {
+      //                   $parent.parent().find('.show').removeClass('show');
+      //                   $parent.addClass('show');
+      //                   $el.next().addClass('show');
+      //                   $el.next().css({"top": $el[0].offsetTop, "left": $parent.outerWidth() - 4});
+      //               }
+      //               e.preventDefault();
+      //               e.stopPropagation();
+      //           }
+      //       });
+
+      //       $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
+      //           $(this).find('li.dropdown').removeClass('show open');
+      //           $(this).find('ul.dropdown-menu').removeClass('show open');
+      //       });
+
+      //       });
+   </script>
+<ul>
+  <li><a href="{% url 'home' %}" id="name">AURORA</a></li>
+  <li><a href="#" class="pointer" id="lang">Язык</a></li>
+  <li><a class="pointer" id="contact" href="{% url 'about' %}">Написать нам</a></li>
+  <li><a class="pointer" id="about" href="{% url 'about' %}">О нас</a></li>
+    {% if user.is_authenticated %}
+    <li><a class="pointer" href="{% url 'profile' %}" id="profile">Профиль</a></li>
+    {% else %}
+    <li><a class="pointer" id="registration" href="{% url 'registration' %}">Регистрация</a></li>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a class="pointer" href="{% url 'logout'%}?next={% url 'home' %}">Выход</a>
+    {% else %}
+    <a class="pointer" href="{% url 'login'%}">Вход</a>
+    {% endif %}
+</ul>
+{% block content %}{% endblock %}
+</body>
+</html>
